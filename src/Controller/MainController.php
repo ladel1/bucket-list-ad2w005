@@ -8,12 +8,29 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
+    
     /**
      * @Route("/", name="app_main")
      */
     public function index(): Response
     {
-        $menu = ["Accueil"=>"app_main","Contact"=>"#","Bucket List"=>"#"];
-        return $this->render('main/home.html.twig',compact("menu"));
+        return $this->render('main/home.html.twig');
     }
+
+    /**
+     * @Route("/about-us", name="app_aboutUs")
+     */
+    public function aboutUs(): Response
+    {
+        return $this->render('main/about-us.html.twig');
+    }
+
+    /**
+     * @Route("/legal-stuff",name="app_legalStuff")
+     */
+    public function legalStuff(): Response
+    {
+        return $this->render('main/legal-stuff.html.twig');
+    }
+
 }

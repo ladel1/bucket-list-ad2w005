@@ -8,11 +8,12 @@
         {% block stylesheets %}
             
         {% endblock %}
-
-        {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        {% block javascriptshead %}
             
         {% endblock %}
     </head>
+    {% set menu = { "Accueil":"app_main","About Us":"app_aboutUs","Liste Wish":"app_wish_list" } %}
     <body>
         <div class="grid-container">
             <header>
@@ -51,5 +52,8 @@
                   </p>
             </footer>
         </div>
+        {% block javascriptsbody %}
+            
+        {% endblock %}        
     </body>
 </html>

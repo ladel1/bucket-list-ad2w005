@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\WishRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=WishRepository::class)
@@ -18,6 +19,7 @@ class Wish
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Ce champ ne peut pas etre vide !")
      * @ORM\Column(type="string", length=250)
      */
     private $title;
@@ -41,6 +43,15 @@ class Wish
      * @ORM\Column(type="datetime")
      */
     private $dateCreated;
+
+
+    public function __construct()
+    {
+        $this->setIsPublished(true);
+        $this->setDateCreated(new \DateTime("now"));
+    }
+
+
 
     public function getId(): ?int
     {

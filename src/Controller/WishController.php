@@ -53,4 +53,24 @@ class WishController extends AbstractController
         );
     }    
 
+
+    
+    /**
+     * @Route("/remove", name="remove")
+     */
+    public function remove(Request $request,WishRepository $wishRepo): Response
+    {
+
+        $token = $request->request->get('_token');
+        if($this->isCsrfTokenValid('delete-item',  $token)){
+            $id = $request->request->get('id');
+            $wish = $wishRepo->find($id);
+            $wishRepo->remove($wish);
+            $this->addFlash("success","Wish with Id='$id' has been removed");
+        }
+        
+        return $this->redirectToRoute("app_wish_list");
+
+    } 
+
 }

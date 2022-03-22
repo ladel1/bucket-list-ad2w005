@@ -17,5 +17,6 @@
     <h2> {{wish.title|capitalize }} </h2>
     <small>{{wish.author}} | {{wish.dateCreated|date("d-m-Y H:i") }}</small>
     <p>{{wish.description}}</p>
+    <p>{{wish.category.name}}</p>
 
 {% endblock %}

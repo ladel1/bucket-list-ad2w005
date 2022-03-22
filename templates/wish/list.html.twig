@@ -3,6 +3,18 @@
 {% block title %}Liste wish{% endblock %}
 
 {% block body %}
+
+    <div class="row text-center">
+        {% for messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+<form action="{{ path('app_wish_remove') }}" method="post">
     <table class="table">
         <thead>
             <tr>
@@ -11,6 +23,8 @@
                 <th scope="col">Description</th>
                 <th scope="col">Auteur</th>
                 <th scope="col">Date de création</th>
+                <th scope="col">Catégorie</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +35,12 @@
                     <td>{{wish.description|slice(0,80)}}...</td>
                     <td>{{wish.author}}</td>
                     <td>{{wish.dateCreated|date(" d-m-Y H:i ")}}</td>
+                    <td>{{wish.category.name}} </td>
+                    <td> <button class="btn btn-primary" type="submit" name="id" value="{{wish.id}}" >Supprimer</button> </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    <input type="hidden" id="wish_item" name="_token" value="{{ csrf_token('delete-item') }}"/>
+</form>    
 {% endblock %}

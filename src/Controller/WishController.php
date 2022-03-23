@@ -39,6 +39,9 @@ class WishController extends AbstractController
     {   
         // Création d'objet wish
         $wish = new Wish();
+        // if($this->getUser()){
+        //     $wish->setAuthor($this->getUser()->getUserIdentifier());
+        // }
         // Création Formulaire
         $wishForm = $this->createForm(WishType::class,$wish);
         $wishForm->handleRequest($request);

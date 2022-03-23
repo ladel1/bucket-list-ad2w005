@@ -4,5 +4,11 @@
 {% block title %}Add wish{% endblock %}
 
 {% block body %}
-    {{form(wishForm)}}
+    {{form_start(wishForm)}}
+        {{form_row(wishForm.title)}}
+        {{form_row(wishForm.description)}}
+        {{form_row(wishForm.category)}}
+        {{form_row(wishForm.author,{'attr':{ 'value':app.user.pseudo }})}}
+
+    {{form_end(wishForm)}}
 {% endblock %}

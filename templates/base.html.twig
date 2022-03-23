@@ -15,6 +15,7 @@
         {% endblock %}
     </head>
     {% set menu = { "Accueil":"app_main","Ajouter Wish":"app_wish_add","About Us":"app_aboutUs","Liste Wish":"app_wish_list" } %}
+    {% set menuNotConnected = {"Connexion":"app_login","Inscription":"app_register"} %}
     <body>
         <div class="grid-container">
             <header>
@@ -38,6 +39,25 @@
                                         {% endif %}
                                     </li>
                                 {% endfor %}
+                                {% if app.user == false %}
+                                    {% for key,value in menuNotConnected %}
+                                        <li>
+                                            {% if value != "#" %}
+                                                <a href="{{path(value)}}">
+                                                    {{key}}
+                                                </a>
+                                            {% else %}
+                                                <a href="#">
+                                                    {{key}}
+                                                </a>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>
+                                        <a href="{{path("app_logout")}}">Déconnexion</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </nav>
                     </div>

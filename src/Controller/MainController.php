@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\Functions;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

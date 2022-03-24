@@ -24,7 +24,7 @@ class ContactController extends AbstractController
         if($contactForm->isSubmitted() && $contactForm->isValid()){
          
             $email = (new Email())
-            ->from($contact->getEmail())
+            ->from('mailtrap@example.com')
             ->to('adel.latibi@gmail.com')
             ->subject($contact->getSubject())
             ->html("<p>Hello {$contact->getEmail()} <br> {$contact->getMessage()} <br> Cordialment. </p>");
